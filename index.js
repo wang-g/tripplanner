@@ -4,9 +4,10 @@ var eventNum = 0;
 
 $('#calendar').fullCalendar({
 	// put your options and callbacks here
-	contentHeight: 500,
+	contentHeight: 350,
 	selectable: true,
 	selectHelper: true,
+	fixedWeekCount: false,
 	
 	select: function(start, end) {
 		//eventOverlap: false,
@@ -42,8 +43,6 @@ $('#calendar').fullCalendar({
 
 })
 
-
-
 function isOverlapping(start, end){
     var array = $('#calendar').fullCalendar('clientEvents');
     for(i in array){
@@ -55,4 +54,24 @@ function isOverlapping(start, end){
     return false;
 }
 
+
 });
+
+function removeAll(){
+	console.log("HELLO");
+	$('#calendar').fullCalendar('removeEvents');
+}
+
+var tripArray=[];
+var counter = 0;
+function addDest(e){
+	//e.preventDefault();
+	var loc = $('#loc1').val();
+	var dur = $('#durr').val();
+	tripArray[counter]={"loc":loc,"dur":dur};
+	counter++;
+	$('#loc1').val("");
+	$('#durr').val("");
+	var myDiv = $('<div>').append(loc + " ---- " + dur + " Days");
+	$('#destForm').append(myDiv);
+}
