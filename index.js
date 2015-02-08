@@ -1,12 +1,13 @@
 $(document).ready(function() {
-
+var eventNum = 0;
 // page is now ready, initialize the calendar...
 
 $('#calendar').fullCalendar({
-// put your options and callbacks here
-contentHeight: 500,
-selectable: true,
+	// put your options and callbacks here
+	contentHeight: 500,
+	selectable: true,
 	selectHelper: true,
+	
 	select: function(start, end) {
 		//eventOverlap: false,
 		//var title = prompt('Event Title:');
@@ -15,8 +16,10 @@ selectable: true,
 			var eventData = {
 					title: "FREE",
 					start: start,
-					end: end
+					end: end,
+					id: eventNum
 			};
+			eventNum++;
 			$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
 		}
 		$('#calendar').fullCalendar('unselect');
@@ -29,7 +32,8 @@ selectable: true,
 		//window.confirm("Remove free block?");
 		var r = confirm("Remove free block?");
 		if (r == true) {
-   			$('#calendar').fullCalendar('removeEvents', calEvent.id);
+			console.log(calEvent.id);
+   			$('#calendar').fullCalendar('removeEvents', [calEvent.id]);
 		}
         // change the border color just for fun
         $(this).css('border-color', 'red');
