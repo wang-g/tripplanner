@@ -1,0 +1,12 @@
+#calendar {
+	width: 600px;
+	height: 400px;
+}
+
+.fc-content{
+	height: 35px;
+}
+
+.fc-event{
+	opacity: 0.5;
+}
