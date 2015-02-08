@@ -68,10 +68,12 @@ function addDest(e){
 	//e.preventDefault();
 	var loc = $('#loc1').val();
 	var dur = $('#durr').val();
-	tripArray[counter]={"loc":loc,"dur":dur};
-	counter++;
-	$('#loc1').val("");
-	$('#durr').val("");
-	var myDiv = $('<div>').append(loc + " ---- " + dur + " Days");
-	$('#destForm').append(myDiv);
+	if(loc !== "" && dur !== ""){
+		tripArray[counter]={"loc":loc,"dur":dur};
+		counter++;
+		$('#loc1').val("");
+		$('#durr').val("");
+		var myDiv = $('<div>').append(loc + " ---- " + dur + " Days");
+		$('#destForm').append(myDiv);
+	}
 }
